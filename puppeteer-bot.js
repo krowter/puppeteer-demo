@@ -18,7 +18,7 @@ const selectors = {
     price: ".price",
     category: ".category",
   },
-  itemClass: "item",
+  item: ".item",
   submitButton: "#submit-button",
   searchField: "#search-field",
 };
@@ -39,10 +39,10 @@ const main = async () => {
   await page.click(selectors.submitButton);
 
   const items = await page.evaluate((knownSelectors) => {
-    const { itemDetails, itemClass } = knownSelectors;
+    const { itemDetails, item } = knownSelectors;
 
     //capture Items
-    const result = [...document.getElementsByClassName(itemClass)];
+    const result = [...document.querySelectorAll(item)];
 
     //function to extract content
     const getValue = (element, selector) => {
